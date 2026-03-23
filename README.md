@@ -1,4 +1,4 @@
-# Harness engineering kata
+# Warehouse Desk App
 
 Experiment with tweaking and tooling the harness of agents so they produce the result you want.
 
@@ -115,7 +115,7 @@ Steps 6 and 7 introduce setup changes (config files, hook scripts) that must per
 ```bash
 cd java
 mvn -q compile
-java -cp target/classes com.kata.warehouse.Main
+java -cp target/classes org.sammancoaching.warehouse.Main
 ```
 
 ### Python
