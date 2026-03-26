@@ -1,5 +1,8 @@
 # Warehouse Desk App
 
+This repository contains the same code in different language versions. It usually works better to open the folder for the language you want to use in your IDE or editor, not this one.
+You can use this code for an exercise. See [Designing a Harness for Agentic Autonomy](https://sammancoaching.org/learning_hours/agentic_engineering/agentic_harness_part1.html).
+
 Experiment with tweaking and tooling the harness of agents so they produce the result you want.
 
 Implement the same feature over and over again, improve the harness to make it generate better an better versions of it
@@ -106,25 +109,6 @@ Steps 6 and 7 introduce setup changes (config files, hook scripts) that must per
 ### 9. Add Debugging Capability and Extract a Skill
 
   Enable the agent to run the app in debug mode, introduce a bug, ask the agent to diagnose and fix it, and then extract that debugging workflow into a reusable skill added to the repository.
-
-
-## Run
-
-### Java
-
-```bash
-cd java
-mvn -q compile
-java -cp target/classes org.sammancoaching.warehouse.Main
-```
-
-### Python
-
-```bash
-cd python
-python main.py
-```
-
 
 ## Quality tools by language
 
