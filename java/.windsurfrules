@@ -1,0 +1,17 @@
+
+# Java Setup
+
+* OS: Windows
+* Maven project
+
+## Code Quality
+
+* Max class length: 100 lines
+* Avoid Switch statements, use polymorphy.
+* On completion run a separate code review of the code and fix all code smells.
+
+## Verification
+
+* Always add unit tests, Junit 5.
+* Existing demo code should be added as unit test, too.
+* Check code coverage and check it.
