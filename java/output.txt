@@ -1,0 +1,23 @@
+---- dump ----
+stock={PEN-BLUE=25, PEN-BLACK=30, NOTE-A5=6, STAPLER=2}
+reserved={PEN-BLUE=0, PEN-BLACK=0, NOTE-A5=0, STAPLER=0}
+orders={O1002=CANCELLED, O1003=SHIPPED, O1004=SHIPPED, O1001=SHIPPED}
+cashBalance=384.0
+
+==== end of day ====
+orders shipped: 3
+orders backordered: 0
+orders cancelled: 1
+cash balance: 384,00
+low stock skus: [STAPLER]
+
+events:
+ - received 5 of NOTE-A5 at 2.2
+ - order O1001 shipped to alice amount=15.0
+ - order O1002 backordered for bob sku=STAPLER qty=5
+ - cancelled backorder O1002
+ - count STAPLER onHand=4 reserved=0 available=4
+ - order O1003 shipped to carol amount=24.0
+ - order O1004 shipped to dan amount=56.0
+ - count NOTE-A5 onHand=6 reserved=0 available=6
+ 
