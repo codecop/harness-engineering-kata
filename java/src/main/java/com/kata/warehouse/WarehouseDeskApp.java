@@ -63,10 +63,11 @@ public class WarehouseDeskApp {
             "SELL;carol;STAPLER;2",
             "SELL;dan;NOTE-A5;14",
             "COUNT;NOTE-A5",
-            "RESERVE;eve;PEN-BLUE;10;5",
+            "RESERVE;eve;PEN-BLUE;10;5", // test reserve OK
             "COUNT;PEN-BLUE",
-            "RESERVE;frank;PEN-BLUE;20;3",
-            "CONFIRM;R2001",
+            "RESERVE;frank;PEN-BLUE;20;3", // test reserve insufficient
+            "CONFIRM;R2001", // test confirm
+            // no test confirm unknown number
             "COUNT;PEN-BLUE",
             "RESERVE;grace;NOTE-A5;3;2",
             "RELEASE;R2003",

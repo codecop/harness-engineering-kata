@@ -1,0 +1,31 @@
+---- dump ----
+stock={PEN-BLUE=15, PEN-BLACK=30, NOTE-A5=6, STAPLER=2}
+reserved={PEN-BLUE=0, PEN-BLACK=0, NOTE-A5=3, STAPLER=0}
+reservations=[R2002]
+orders={O1002=CANCELLED, O1003=SHIPPED, O1004=SHIPPED, O1005=SHIPPED, O1001=SHIPPED}
+cashBalance=400.0
+
+==== end of day ====
+orders shipped: 4
+orders backordered: 0
+orders cancelled: 1
+cash balance: 400,00
+low stock skus: [STAPLER]
+
+events:
+ - received 5 of NOTE-A5 at 2.2
+ - order O1001 shipped to alice amount=15.0
+ - order O1002 backordered for bob sku=STAPLER qty=5
+ - cancelled backorder O1002
+ - count STAPLER onHand=4 reserved=0 available=4
+ - order O1003 shipped to carol amount=24.0
+ - order O1004 shipped to dan amount=56.0
+ - count NOTE-A5 onHand=6 reserved=0 available=6
+ - reservation R2001 created for eve sku=PEN-BLUE qty=10 expires_in=5min
+ - count PEN-BLUE onHand=25 reserved=10 available=15
+ - reservation failed for frank sku=PEN-BLUE qty=20 (insufficient stock)
+ - reservation R2001 confirmed as order O1005 shipped to eve amount=16.0
+ - count PEN-BLUE onHand=15 reserved=0 available=15
+ - reservation R2002 created for grace sku=NOTE-A5 qty=3 expires_in=2min
+ - cannot release R2003 because it does not exist
+ - count NOTE-A5 onHand=6 reserved=3 available=3
