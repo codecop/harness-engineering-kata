@@ -42,4 +42,7 @@
 * check "package by feature"
   * find subdomains and group the code by them and not primary by layer.
 
+* add PMD with reasonable rules to the project
+  * make it run and fail the build when running tests.
+
 es reicht mal.
