@@ -1,13 +1,13 @@
 package com.kata.warehouse;
 
-import com.kata.warehouse.domain.repository.OrderRepository;
-import com.kata.warehouse.domain.repository.ProductRepository;
-import com.kata.warehouse.domain.repository.ReservationRepository;
-import com.kata.warehouse.domain.service.CashService;
-import com.kata.warehouse.domain.service.EventLogService;
-import com.kata.warehouse.domain.service.InventoryService;
-import com.kata.warehouse.domain.service.OrderService;
-import com.kata.warehouse.domain.service.ReservationService;
+import com.kata.warehouse.financial.CashService;
+import com.kata.warehouse.inventory.InventoryService;
+import com.kata.warehouse.inventory.ProductRepository;
+import com.kata.warehouse.order.OrderRepository;
+import com.kata.warehouse.order.OrderService;
+import com.kata.warehouse.reservation.ReservationRepository;
+import com.kata.warehouse.reservation.ReservationService;
+import com.kata.warehouse.shared.EventLogService;
 
 public class WarehouseContext {
     private final ProductRepository productRepository;

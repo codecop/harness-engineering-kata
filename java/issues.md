@@ -25,6 +25,8 @@
 
 * Checkstyle in Maven für Formatting, die 100 LoC pro Klasse usw.
 * PMD in Maven
+  Add PMD to Maven with reasonable rules. Do not change the code now.
+
 * ArchUnit Test
   * keine Cycles zwischen Klassen
   * keine Cycles zwischen Packages
@@ -32,6 +34,12 @@
 ### Prompts
 
 * "use packages"
+
 * decompose into objects:
   * follow DDD approach: Use Entities, Value Objects, Services, Repositories
   * group fields into entities by shared prefix in names
+
+* check "package by feature"
+  * find subdomains and group the code by them and not primary by layer.
+
+es reicht mal.

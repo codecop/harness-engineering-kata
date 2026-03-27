@@ -17,12 +17,12 @@ class WarehouseDeskAppTest {
 
     private int getStockBySku(String sku) throws Exception {
         WarehouseContext context = app.getContext();
-        return context.getInventoryService().getStockOnHand(new com.kata.warehouse.domain.valueobject.SKU(sku)).getValue();
+        return context.getInventoryService().getStockOnHand(new com.kata.warehouse.shared.SKU(sku)).getValue();
     }
 
     private int getReservedBySku(String sku) throws Exception {
         WarehouseContext context = app.getContext();
-        return context.getInventoryService().getReservedQuantity(new com.kata.warehouse.domain.valueobject.SKU(sku)).getValue();
+        return context.getInventoryService().getReservedQuantity(new com.kata.warehouse.shared.SKU(sku)).getValue();
     }
 
     private double getCashBalance() throws Exception {
@@ -32,7 +32,7 @@ class WarehouseDeskAppTest {
 
     private String getOrderStatus(String orderId) throws Exception {
         WarehouseContext context = app.getContext();
-        com.kata.warehouse.domain.entity.Order order = context.getOrderService().getOrder(new com.kata.warehouse.domain.valueobject.OrderId(orderId));
+        com.kata.warehouse.order.Order order = context.getOrderService().getOrder(new com.kata.warehouse.order.OrderId(orderId));
         return order != null ? order.getStatus().name() : null;
     }
 

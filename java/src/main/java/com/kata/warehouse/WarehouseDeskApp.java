@@ -1,10 +1,9 @@
 package com.kata.warehouse;
 
-import com.kata.warehouse.application.command.Command;
-import com.kata.warehouse.domain.valueobject.Money;
-import com.kata.warehouse.domain.valueobject.Quantity;
-import com.kata.warehouse.domain.valueobject.SKU;
-import com.kata.warehouse.infrastructure.ReportGenerator;
+import com.kata.warehouse.shared.Money;
+import com.kata.warehouse.shared.Quantity;
+import com.kata.warehouse.shared.ReportGenerator;
+import com.kata.warehouse.shared.SKU;
 
 import java.util.List;
 

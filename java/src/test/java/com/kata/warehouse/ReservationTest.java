@@ -1,6 +1,6 @@
 package com.kata.warehouse;
 
-import com.kata.warehouse.domain.entity.Reservation;
+import com.kata.warehouse.reservation.Reservation;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,12 +18,12 @@ class ReservationTest {
 
     private int getStockBySku(String sku) throws Exception {
         WarehouseContext context = app.getContext();
-        return context.getInventoryService().getStockOnHand(new com.kata.warehouse.domain.valueobject.SKU(sku)).getValue();
+        return context.getInventoryService().getStockOnHand(new com.kata.warehouse.shared.SKU(sku)).getValue();
     }
 
     private int getReservedBySku(String sku) throws Exception {
         WarehouseContext context = app.getContext();
-        return context.getInventoryService().getReservedQuantity(new com.kata.warehouse.domain.valueobject.SKU(sku)).getValue();
+        return context.getInventoryService().getReservedQuantity(new com.kata.warehouse.shared.SKU(sku)).getValue();
     }
 
     private double getCashBalance() throws Exception {
@@ -33,13 +33,13 @@ class ReservationTest {
 
     private String getOrderStatus(String orderId) throws Exception {
         WarehouseContext context = app.getContext();
-        com.kata.warehouse.domain.entity.Order order = context.getOrderService().getOrder(new com.kata.warehouse.domain.valueobject.OrderId(orderId));
+        com.kata.warehouse.order.Order order = context.getOrderService().getOrder(new com.kata.warehouse.order.OrderId(orderId));
         return order != null ? order.getStatus().name() : null;
     }
 
-    private com.kata.warehouse.domain.entity.Reservation getReservation(String reservationId) throws Exception {
+    private com.kata.warehouse.reservation.Reservation getReservation(String reservationId) throws Exception {
         WarehouseContext context = app.getContext();
-        return context.getReservationService().getReservation(new com.kata.warehouse.domain.valueobject.ReservationId(reservationId));
+        return context.getReservationService().getReservation(new com.kata.warehouse.reservation.ReservationId(reservationId));
     }
 
     @Test
