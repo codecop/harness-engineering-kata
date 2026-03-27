@@ -22,21 +22,16 @@
     4.2. Run a separate test review focusing on covering all existing features and avoiding test overlap.
 
 5. Verify using old and new tests.
-6. Run a separate code review of the code and fix all code smells.
+6. Run a code quality review and fix all code smells. See [docs/CODE-QUALITY.md](docs/CODE-QUALITY.md)
 
 ## General
 
 * OS: Windows
 * Maven project
-
-## Code Quality
-
-* Max class length: 100 lines
-* Avoid Switch statements, use polymorphy.
-* On completion run a separate code review of the code and fix all code smells.
+* Architecture in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
 
 ## Verification
 
 * Always add unit tests, Junit 5.
 * Existing demo code should be added as unit test, too.
-* Check code coverage and check it.
+* Check code statement coverage with JaCoco and add tests if needed.
