@@ -1,5 +1,7 @@
 package com.kata.warehouse;
 
+import com.kata.warehouse.application.command.*;
+
 import java.util.HashMap;
 import java.util.Map;
 

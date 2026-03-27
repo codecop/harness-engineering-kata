@@ -1,5 +1,11 @@
 package com.kata.warehouse;
 
+import com.kata.warehouse.application.command.Command;
+import com.kata.warehouse.domain.valueobject.Money;
+import com.kata.warehouse.domain.valueobject.Quantity;
+import com.kata.warehouse.domain.valueobject.SKU;
+import com.kata.warehouse.infrastructure.ReportGenerator;
+
 import java.util.List;
 
 public class WarehouseDeskApp {
@@ -16,24 +22,14 @@ public class WarehouseDeskApp {
     }
 
     public void seedData() {
-        context.getStockBySku().put("PEN-BLACK", 40);
-        context.getStockBySku().put("PEN-BLUE", 25);
-        context.getStockBySku().put("NOTE-A5", 15);
-        context.getStockBySku().put("STAPLER", 4);
+        context.getInventoryService().receiveStock(new SKU("PEN-BLACK"), new Quantity(40), new Money(1.5));
+        context.getInventoryService().receiveStock(new SKU("PEN-BLUE"), new Quantity(25), new Money(1.6));
+        context.getInventoryService().receiveStock(new SKU("NOTE-A5"), new Quantity(15), new Money(4.0));
+        context.getInventoryService().receiveStock(new SKU("STAPLER"), new Quantity(4), new Money(12.0));
 
-        context.getReservedBySku().put("PEN-BLACK", 0);
-        context.getReservedBySku().put("PEN-BLUE", 0);
-        context.getReservedBySku().put("NOTE-A5", 0);
-        context.getReservedBySku().put("STAPLER", 0);
-
-        context.getPriceBySku().put("PEN-BLACK", 1.5);
-        context.getPriceBySku().put("PEN-BLUE", 1.6);
-        context.getPriceBySku().put("NOTE-A5", 4.0);
-        context.getPriceBySku().put("STAPLER", 12.0);
-
-        context.setCashBalance(300.0);
-        context.setNextOrderNumber(1001);
-        context.setNextReservationNumber(2001);
+        context.getCashService().addCash(new Money(300.0));
+        context.getOrderService().setNextOrderNumber(1001);
+        context.getReservationService().setNextReservationNumber(2001);
     }
 
     public void runDemoDay() {
@@ -64,7 +60,7 @@ public class WarehouseDeskApp {
         if (command != null) {
             command.execute(context, parts);
         } else {
-            context.addEvent("unknown command: " + line);
+            context.getEventLogService().addEvent("unknown command: " + line);
         }
     }
 

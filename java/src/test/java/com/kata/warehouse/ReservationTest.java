@@ -1,5 +1,6 @@
 package com.kata.warehouse;
 
+import com.kata.warehouse.domain.entity.Reservation;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -17,27 +18,28 @@ class ReservationTest {
 
     private int getStockBySku(String sku) throws Exception {
         WarehouseContext context = app.getContext();
-        return context.getStockBySku().getOrDefault(sku, 0);
+        return context.getInventoryService().getStockOnHand(new com.kata.warehouse.domain.valueobject.SKU(sku)).getValue();
     }
 
     private int getReservedBySku(String sku) throws Exception {
         WarehouseContext context = app.getContext();
-        return context.getReservedBySku().getOrDefault(sku, 0);
+        return context.getInventoryService().getReservedQuantity(new com.kata.warehouse.domain.valueobject.SKU(sku)).getValue();
     }
 
     private double getCashBalance() throws Exception {
         WarehouseContext context = app.getContext();
-        return context.getCashBalance();
+        return context.getCashService().getCashBalance().getAmount();
     }
 
     private String getOrderStatus(String orderId) throws Exception {
         WarehouseContext context = app.getContext();
-        return context.getOrderStatus().get(orderId);
+        com.kata.warehouse.domain.entity.Order order = context.getOrderService().getOrder(new com.kata.warehouse.domain.valueobject.OrderId(orderId));
+        return order != null ? order.getStatus().name() : null;
     }
 
-    private Reservation getReservation(String reservationId) throws Exception {
+    private com.kata.warehouse.domain.entity.Reservation getReservation(String reservationId) throws Exception {
         WarehouseContext context = app.getContext();
-        return context.getReservations().get(reservationId);
+        return context.getReservationService().getReservation(new com.kata.warehouse.domain.valueobject.ReservationId(reservationId));
     }
 
     @Test
@@ -46,7 +48,7 @@ class ReservationTest {
         app.processLine("RESERVE;alice;PEN-BLACK;5;10");
         Reservation reservation = getReservation("R2001");
         assertNotNull(reservation);
-        assertEquals("R2001", reservation.getReservationId());
+        assertEquals("R2001", reservation.getReservationId().getValue());
     }
 
     @Test
@@ -230,7 +232,7 @@ class ReservationTest {
         Reservation res2 = getReservation("R2002");
         assertNotNull(res1);
         assertNotNull(res2);
-        assertNotEquals(res1.getReservationId(), res2.getReservationId());
+        assertNotEquals(res1.getReservationId().getValue(), res2.getReservationId().getValue());
     }
 
     @Test

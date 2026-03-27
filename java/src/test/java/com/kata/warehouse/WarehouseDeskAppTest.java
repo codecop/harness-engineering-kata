@@ -17,22 +17,23 @@ class WarehouseDeskAppTest {
 
     private int getStockBySku(String sku) throws Exception {
         WarehouseContext context = app.getContext();
-        return context.getStockBySku().getOrDefault(sku, 0);
+        return context.getInventoryService().getStockOnHand(new com.kata.warehouse.domain.valueobject.SKU(sku)).getValue();
     }
 
     private int getReservedBySku(String sku) throws Exception {
         WarehouseContext context = app.getContext();
-        return context.getReservedBySku().getOrDefault(sku, 0);
+        return context.getInventoryService().getReservedQuantity(new com.kata.warehouse.domain.valueobject.SKU(sku)).getValue();
     }
 
     private double getCashBalance() throws Exception {
         WarehouseContext context = app.getContext();
-        return context.getCashBalance();
+        return context.getCashService().getCashBalance().getAmount();
     }
 
     private String getOrderStatus(String orderId) throws Exception {
         WarehouseContext context = app.getContext();
-        return context.getOrderStatus().get(orderId);
+        com.kata.warehouse.domain.entity.Order order = context.getOrderService().getOrder(new com.kata.warehouse.domain.valueobject.OrderId(orderId));
+        return order != null ? order.getStatus().name() : null;
     }
 
     @Test

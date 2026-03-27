@@ -28,9 +28,10 @@
 * ArchUnit Test
   * keine Cycles zwischen Klassen
   * keine Cycles zwischen Packages
+
+### Prompts
+
 * "use packages"
 * decompose into objects:
   * follow DDD approach: Use Entities, Value Objects, Services, Repositories
   * group fields into entities by shared prefix in names
-
-### Prompts

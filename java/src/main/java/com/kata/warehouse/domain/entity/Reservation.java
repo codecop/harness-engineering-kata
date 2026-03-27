@@ -1,14 +1,18 @@
-package com.kata.warehouse;
+package com.kata.warehouse.domain.entity;
+
+import com.kata.warehouse.domain.valueobject.Quantity;
+import com.kata.warehouse.domain.valueobject.ReservationId;
+import com.kata.warehouse.domain.valueobject.SKU;
 
 public class Reservation {
-    private final String reservationId;
+    private final ReservationId reservationId;
     private final String customer;
-    private final String sku;
-    private final int quantity;
+    private final SKU sku;
+    private final Quantity quantity;
     private final long expiryTimeMillis;
     private boolean active;
 
-    public Reservation(String reservationId, String customer, String sku, int quantity, int expiryMinutes) {
+    public Reservation(ReservationId reservationId, String customer, SKU sku, Quantity quantity, int expiryMinutes) {
         this.reservationId = reservationId;
         this.customer = customer;
         this.sku = sku;
@@ -17,7 +21,7 @@ public class Reservation {
         this.active = true;
     }
 
-    public String getReservationId() {
+    public ReservationId getReservationId() {
         return reservationId;
     }
 
@@ -25,11 +29,11 @@ public class Reservation {
         return customer;
     }
 
-    public String getSku() {
+    public SKU getSku() {
         return sku;
     }
 
-    public int getQuantity() {
+    public Quantity getQuantity() {
         return quantity;
     }
 
